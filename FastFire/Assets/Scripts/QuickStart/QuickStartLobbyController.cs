@@ -18,7 +18,7 @@ public class QuickStartLobbyController : MonoBehaviourPunCallbacks
         quickStartButton.SetActive(true);
     }
 
-    public void QuickStart() // Paired to the Quick Star button
+    public void QuickStart() // Paired to the Quick Start button
     {
         quickStartButton.SetActive(false);
         quickCancelButton.SetActive(true);

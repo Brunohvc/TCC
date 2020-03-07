@@ -17,10 +17,4 @@ public class NetworkController : MonoBehaviourPunCallbacks
         Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
         // PhotonNetwork.JoinRandomRoom();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

@@ -7,6 +7,7 @@ public class QuickStartRoomController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private int multiplayerSceneIndex;
+
     public override void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);
