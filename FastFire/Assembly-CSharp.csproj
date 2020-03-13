@@ -78,6 +78,9 @@
     <Compile Include="Assets\Scripts\DelayStartMenu\DelayStartRoomController.cs" />
     <Compile Include="Assets\Scripts\DelayStartWaiting\DelayStartWaitingRoomController.cs" />
     <Compile Include="Assets\Scripts\GameSetupController.cs" />
+    <Compile Include="Assets\Scripts\Login\LobbyControllerLogin.cs" />
+    <Compile Include="Assets\Scripts\Login\RoomButton.cs" />
+    <Compile Include="Assets\Scripts\Login\RoomControllerLogin.cs" />
     <Compile Include="Assets\Scripts\NetworkController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartLobbyController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartRoomController.cs" />
