@@ -73,6 +73,7 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             Debug.Log("Password: " + PlayerPrefs.GetString("Password"));
             PhotonNetwork.NickName = playerPasswordInput.text;
             // PhotonNetwork.JoinLobby();
+
             SceneManager.LoadScene(LobbySceneIndex);
         }
     }
