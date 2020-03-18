@@ -81,6 +81,9 @@
     <Compile Include="Assets\Scripts\Login\LobbyControllerLogin.cs" />
     <Compile Include="Assets\Scripts\Login\RoomButton.cs" />
     <Compile Include="Assets\Scripts\Login\RoomControllerLogin.cs" />
+    <Compile Include="Assets\Scripts\Main\MainLobbyController.cs" />
+    <Compile Include="Assets\Scripts\Main\MainRoomController.cs" />
+    <Compile Include="Assets\Scripts\Main\RoomButton.cs" />
     <Compile Include="Assets\Scripts\NetworkController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartLobbyController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartRoomController.cs" />
