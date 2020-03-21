@@ -1,18 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;
 
 public class RoomButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Text nameText;
+    [SerializeField]
+    private Text sizeText;
+
+    private string roomName;
+    private int roomSize;
+    private int playerCount;
+
+    public void JoinRoomOnClick()
     {
-        
+        PhotonNetwork.JoinRoom(roomName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetRoom(string nameInput, int sizeInput, int countInput)
     {
-        
+        roomName = nameInput;
+        roomSize = sizeInput;
+        playerCount = countInput;
+        nameText.text = nameInput;
+        sizeText.text = countInput + "/" + sizeInput;
     }
 }

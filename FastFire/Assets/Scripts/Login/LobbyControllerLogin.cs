@@ -25,8 +25,6 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        Debug.Log("Login Scene On!");
-
         loginData.SetActive(true);
         connectText.SetActive(false);
 
@@ -34,7 +32,6 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         {
             if(PlayerPrefs.GetString("Login") != "")
             {
-                Debug.Log("Login: " + PlayerPrefs.GetString("Login"));
                 playerLoginInput.text = PlayerPrefs.GetString("Login");
             }
 
@@ -42,8 +39,7 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             {
                 if (PlayerPrefs.GetString("Password") != "")
                 {
-                    Debug.Log("Password: " + PlayerPrefs.GetString("Password"));
-                    playerLoginInput.text = PlayerPrefs.GetString("Password");
+                    playerPasswordInput.text = PlayerPrefs.GetString("Password");
                 }
             }
         }
@@ -51,30 +47,23 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
 
     public void PlayerLoginUpdate(string loginInput)
     {
-        Debug.Log("Login: " + loginInput);
         playerLoginInput.text = loginInput;
     }
 
     public void PlayerPasswordUpdate(string passwordInput)
     {
-        Debug.Log("Password: " + passwordInput);
         playerPasswordInput.text = passwordInput;
     }
 
     public void LoginOnClick()
     {
-        Debug.Log("Login Button Click!");
-
         if (playerLoginInput.text != "")
         {
             PlayerPrefs.SetString("Login", playerLoginInput.text);
             PlayerPrefs.SetString("Password", playerPasswordInput.text);
-            Debug.Log("Login: " + PlayerPrefs.GetString("Login"));
-            Debug.Log("Password: " + PlayerPrefs.GetString("Password"));
-            PhotonNetwork.NickName = playerPasswordInput.text;
-            // PhotonNetwork.JoinLobby();
-
+            PhotonNetwork.NickName = playerLoginInput.text;
             SceneManager.LoadScene(LobbySceneIndex);
+            PhotonNetwork.JoinLobby();
         }
     }
 }

@@ -10,11 +10,9 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject lobbyPanel;
-    [SerializeField]
-    private GameObject roomPanel;
 
-    private string roomName;
-    private int roomSize;
+    private string roomName = "Sala 1";
+    private int roomSize = 4;
 
     private List<RoomInfo> roomListings;
     [SerializeField]
@@ -22,17 +20,18 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject RoomListingPrefab;
 
-
-    public override void OnConnectedToMaster()
+    public override void OnJoinedLobby()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
         lobbyPanel.SetActive(true);
         roomListings = new List<RoomInfo>();
-        PhotonNetwork.JoinLobby();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        if(roomList == null)
+        {
+            roomListings = new List<RoomInfo>();
+        }
         int tempIndex;
         foreach(RoomInfo room in roomList)
         {
@@ -67,6 +66,7 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
 
     void ListRoom(RoomInfo room)
     {
+
         if(room.IsOpen && room.IsVisible)
         {
             GameObject tempListing = Instantiate(RoomListingPrefab, roomsContainer);
@@ -87,7 +87,6 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        Debug.Log("Creating Room Now!");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte) roomSize};
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }

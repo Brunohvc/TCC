@@ -1,11 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - DelayStartLobbyController
-    - DelayStartRoomController
-    - DelayStartWaitingRoomController
     - GameSetupController
+    - LobbyControllerLogin
+    - MainLobbyController
+    - MainRoomController
     - NetworkController
+    - RoomButton
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -41,11 +42,15 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/DelayStartMenu.unity:
+    Assets/Scenes/LoginScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -93,47 +98,47 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 11794}
+      Script: {instanceID: 11798}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11880}
     - Class: 114
-      Script: {instanceID: 11950}
+      Script: {instanceID: 11954}
     - Class: 114
-      Script: {instanceID: 12150}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12214}
+      Script: {instanceID: 12220}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 12348}
     - Class: 114
-      Script: {instanceID: 12398}
+      Script: {instanceID: 12404}
     - Class: 114
-      Script: {instanceID: 12450}
+      Script: {instanceID: 12456}
     - Class: 114
-      Script: {instanceID: 12472}
+      Script: {instanceID: 12478}
     - Class: 114
-      Script: {instanceID: 12552}
+      Script: {instanceID: 12558}
     - Class: 114
-      Script: {instanceID: 12560}
+      Script: {instanceID: 12566}
     - Class: 114
-      Script: {instanceID: 12768}
+      Script: {instanceID: 12578}
     - Class: 114
-      Script: {instanceID: 12786}
+      Script: {instanceID: 12654}
+    - Class: 114
+      Script: {instanceID: 12776}
     - Class: 114
       Script: {instanceID: 12794}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12802}
     - Class: 114
-      Script: {instanceID: 13260}
+      Script: {instanceID: 12926}
     - Class: 114
-      Script: {instanceID: 13344}
+      Script: {instanceID: 13272}
     - Class: 114
-      Script: {instanceID: 13374}
+      Script: {instanceID: 13358}
     - Class: 114
-      Script: {instanceID: 13382}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 19032}
-    - Class: 114
-      Script: {instanceID: 19038}
+      Script: {instanceID: 13396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -164,7 +169,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 225
       Script: {instanceID: 0}
-    Assets/Scenes/DelayStartWaiting.unity:
+    Assets/Scenes/MainScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -190,17 +195,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11414}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12342}
+      Script: {instanceID: 11880}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12098}
     - Class: 114
-      Script: {instanceID: 13260}
+      Script: {instanceID: 12208}
     - Class: 114
-      Script: {instanceID: 13344}
+      Script: {instanceID: 12348}
     - Class: 114
-      Script: {instanceID: 19444}
+      Script: {instanceID: 12466}
+    - Class: 114
+      Script: {instanceID: 12578}
+    - Class: 114
+      Script: {instanceID: 12926}
+    - Class: 114
+      Script: {instanceID: 13036}
+    - Class: 114
+      Script: {instanceID: 13086}
+    - Class: 114
+      Script: {instanceID: 13358}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -245,7 +260,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 13080}
+      Script: {instanceID: 13092}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -579,6 +594,12 @@ ScriptsOnlyBuild:
     className: SendRateOnSerializeField
   - hash:
       serializedVersion: 2
+      Hash: 3da111bbd0565fd47f2bca5d92fcb8a6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DelayStartWaitingRoomController
+  - hash:
+      serializedVersion: 2
       Hash: 01af2a1ccde6f5a3777877fce1d85576
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
@@ -601,6 +622,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Asteroids
     className: AsteroidsGameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 69f55f1bcc23c12169f2d66d309f2356
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DelayStartRoomController
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -849,6 +876,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: ea1857a28c23fc2c245360a7bd62dc38
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainRoomController
+  - hash:
+      serializedVersion: 2
       Hash: 259988b2d867e1586634d64379c5ff81
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
@@ -1089,6 +1122,12 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 91e72e9a88db1e19e17a8d80a7f2bb6d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LobbyControllerLogin
+  - hash:
+      serializedVersion: 2
       Hash: 11bdd61587db747672b66c52442395d8
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1263,6 +1302,12 @@ ScriptsOnlyBuild:
     className: CrcCheckToggle
   - hash:
       serializedVersion: 2
+      Hash: f21e479b7cd272489a4f7fdb83042026
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoomButton
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
@@ -1285,6 +1330,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: MarkerTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 49eb08396ec5ba54da8002951b9f59d9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainLobbyController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1455,6 +1506,12 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 87a5e8f18843ccbb874f452411964b1a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DelayStartLobbyController
+  - hash:
+      serializedVersion: 2
       Hash: c656dcc13ae391b68d594cc8f9c590b0
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1555,27 +1612,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 87a5e8f18843ccbb874f452411964b1a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DelayStartLobbyController
-  - hash:
-      serializedVersion: 2
-      Hash: 69f55f1bcc23c12169f2d66d309f2356
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DelayStartRoomController
-  - hash:
-      serializedVersion: 2
-      Hash: 3da111bbd0565fd47f2bca5d92fcb8a6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DelayStartWaitingRoomController
   platform: 5
   scenePathNames:
-  - Assets/Scenes/DelayStartMenu.unity
-  - Assets/Scenes/DelayStartWaiting.unity
+  - Assets/Scenes/LoginScene.unity
+  - Assets/Scenes/MainScene.unity
   - Assets/Scenes/MultiplayerSceneDemo.unity
   playerPath: C:/Users/bruno/Desktop/FastFire/FastFire.exe
