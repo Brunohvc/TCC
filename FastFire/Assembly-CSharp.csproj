@@ -97,9 +97,9 @@
     <Compile Include="Assets\Scripts\Main\MainRoomController.cs" />
     <Compile Include="Assets\Scripts\Main\RoomButton.cs" />
     <Compile Include="Assets\Scripts\NetworkController.cs" />
-    <Compile Include="Assets\Scripts\Players\ControlaCamera.cs" />
     <Compile Include="Assets\Scripts\Players\ControlaJogador.cs" />
     <Compile Include="Assets\Scripts\Players\ControlaJogadorOld.cs" />
+    <Compile Include="Assets\Scripts\Players\ControlaJogadorOld_2.cs" />
     <Compile Include="Assets\Scripts\Players\movement.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartLobbyController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartRoomController.cs" />
