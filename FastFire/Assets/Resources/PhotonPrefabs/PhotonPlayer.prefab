@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5840106741103867578}
   - component: {fileID: 8050555228473293796}
   - component: {fileID: 4326816119825083441}
+  - component: {fileID: 7620634326837326896}
+  - component: {fileID: 455332990044028193}
   m_Layer: 0
   m_Name: PhotonPlayer
   m_TagString: Untagged
@@ -138,10 +140,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ab01fb192c2a344aed614a7be07ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidade: 10
   camera: {fileID: 5795095652019935781}
   character: {fileID: 4040211483798550580}
-  animator: {fileID: 0}
+  CameraPivot: {x: 1.5, y: 1, z: 0}
+  CameraDistance: 1.5
+--- !u!114 &7620634326837326896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510745152628162229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers: []
+--- !u!114 &455332990044028193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5510745152628162229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c939b99e4e8bebb41a9411df7681bea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 10
+  AudioClipAK: {fileID: 0}
+  AudioClipShot: {fileID: 0}
+  HP: 100
+  Debug: 0
 --- !u!1 &5795095652019935781
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5795095652019935781}
   m_LocalRotation: {x: 0.06975647, y: 0, z: 0, w: 0.9975641}
-  m_LocalPosition: {x: 0, y: 1, z: -2.62}
+  m_LocalPosition: {x: 0.771, y: 0.785, z: -1.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6327582758123239275}

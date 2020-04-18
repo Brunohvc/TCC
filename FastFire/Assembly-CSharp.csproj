@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\Players\ControlaJogador.cs" />
     <Compile Include="Assets\Scripts\Players\ControlaJogadorOld3.cs" />
     <Compile Include="Assets\Scripts\Players\ControlaJogadorOld_2.cs" />
+    <Compile Include="Assets\Scripts\Players\PlayerS.cs" />
     <Compile Include="Assets\Scripts\Players\movement.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartLobbyController.cs" />
     <Compile Include="Assets\Scripts\QuickStart\QuickStartRoomController.cs" />
@@ -143,6 +144,18 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Users/bruno/projetos/Unity/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
