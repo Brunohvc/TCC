@@ -28,7 +28,7 @@ class UserController {
   async login({ request, response }) {
     const email = request.input('email')
     const password = request.input('password')
-    console.log(email, password);
+    console.log('Chegou na request', email, password);
 
     Firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
       // Handle Errors here.
@@ -37,27 +37,6 @@ class UserController {
       // ...
       console.log(errorCode, errorMessage);
     });
-
-    firebase.auth().onAuthStateChanged(function (user) {
-      console.log(user);
-      if (user) {
-
-        // User is signed in.
-        var userName = user.userName;
-        var email = user.email;
-        // ...
-      } else {
-        // User is signed out.
-        // ...
-      }
-    });
-
-    if (user.password == password) {
-      return user
-    }
-    else {
-      return response.json({ message: 'Login ou senha incorreta!' })
-    }
   }
 
 
