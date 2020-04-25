@@ -3,32 +3,6 @@
 /** @type {import('@adonisjs/framework/src/Env')} */
 const Env = use('Env')
 
-const Firebase = use('Perafan/Firebase');
-const FirebaseAdmin = use('Perafan/FirebaseAdmin');
-
-console.log(Firebase)
-Firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-
-    // User is signed in.
-    var userName = user.userName;
-    var email = user.email;
-    console.log('userName', userName);
-    console.log('email', email);
-    // ...
-  } else {
-    // User is signed out.
-    // ...
-  }
-
-  if (user.password == password) {
-    return user
-  }
-  else {
-    return response.json({ message: 'Login ou senha incorreta!' })
-  }
-});
-
 module.exports = {
 
   /*

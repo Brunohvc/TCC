@@ -30,13 +30,19 @@ class UserController {
     const password = request.input('password')
     console.log('Chegou na request', email, password);
 
-    Firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-      console.log(errorCode, errorMessage);
-    });
+    Firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        console.log(error);
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') {
+          return { err: 'Wrong password.' }
+        } else {
+          return { err: errorMessage }
+        }
+        return { err: error }
+      });
   }
 
 
@@ -151,5 +157,16 @@ class UserController {
     return response.json({ message: 'Contact deleted!' })
   }
 }
+
+Firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    console.log('Usuário logado!')
+    return { user: user }
+  }
+  else {
+    console.log('Login ou senha incorreta!')
+    return { message: 'Login ou senha incorreta!' }
+  }
+});
 
 module.exports = UserController
