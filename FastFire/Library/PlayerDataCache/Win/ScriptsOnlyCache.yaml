@@ -30,10 +30,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PhotonAnimatorViewEditor
-    - Photon.Pun.PhotonTransformViewEditor
-    - Photon.Pun.PhotonViewInspector
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -116,83 +112,83 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11172}
+      Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11324}
+      Script: {instanceID: 11432}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11458}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11502}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11516}
     - Class: 114
-      Script: {instanceID: 11430}
+      Script: {instanceID: 11560}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 12048}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 12052}
     - Class: 114
-      Script: {instanceID: 11898}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 11902}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 11976}
+      Script: {instanceID: 12250}
     - Class: 114
-      Script: {instanceID: 12012}
+      Script: {instanceID: 12290}
     - Class: 114
-      Script: {instanceID: 12176}
+      Script: {instanceID: 12522}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12528}
     - Class: 114
-      Script: {instanceID: 12234}
-    - Class: 114
-      Script: {instanceID: 12248}
-    - Class: 114
-      Script: {instanceID: 12372}
-    - Class: 114
-      Script: {instanceID: 12380}
-    - Class: 114
-      Script: {instanceID: 12400}
-    - Class: 114
-      Script: {instanceID: 12440}
-    - Class: 114
-      Script: {instanceID: 12458}
-    - Class: 114
-      Script: {instanceID: 12494}
-    - Class: 114
-      Script: {instanceID: 12516}
-    - Class: 114
-      Script: {instanceID: 12598}
+      Script: {instanceID: 12590}
     - Class: 114
       Script: {instanceID: 12606}
     - Class: 114
-      Script: {instanceID: 12608}
+      Script: {instanceID: 12752}
     - Class: 114
-      Script: {instanceID: 12620}
+      Script: {instanceID: 12762}
     - Class: 114
-      Script: {instanceID: 12696}
+      Script: {instanceID: 12788}
     - Class: 114
-      Script: {instanceID: 12714}
+      Script: {instanceID: 12834}
     - Class: 114
-      Script: {instanceID: 12820}
+      Script: {instanceID: 12858}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12902}
     - Class: 114
-      Script: {instanceID: 12846}
+      Script: {instanceID: 12936}
     - Class: 114
-      Script: {instanceID: 12910}
+      Script: {instanceID: 13040}
     - Class: 114
-      Script: {instanceID: 12974}
+      Script: {instanceID: 13056}
     - Class: 114
-      Script: {instanceID: 13320}
+      Script: {instanceID: 13060}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 13072}
     - Class: 114
-      Script: {instanceID: 13436}
+      Script: {instanceID: 13176}
     - Class: 114
-      Script: {instanceID: 13444}
+      Script: {instanceID: 13196}
     - Class: 114
-      Script: {instanceID: 49752}
+      Script: {instanceID: 13324}
+    - Class: 114
+      Script: {instanceID: 13350}
+    - Class: 114
+      Script: {instanceID: 13362}
+    - Class: 114
+      Script: {instanceID: 13442}
+    - Class: 114
+      Script: {instanceID: 13518}
+    - Class: 114
+      Script: {instanceID: 13952}
+    - Class: 114
+      Script: {instanceID: 13980}
+    - Class: 114
+      Script: {instanceID: 14086}
+    - Class: 114
+      Script: {instanceID: 14128}
+    - Class: 114
+      Script: {instanceID: 14138}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 124
@@ -249,33 +245,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11172}
+      Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11502}
     - Class: 114
-      Script: {instanceID: 11430}
+      Script: {instanceID: 11560}
     - Class: 114
-      Script: {instanceID: 11786}
+      Script: {instanceID: 12018}
     - Class: 114
-      Script: {instanceID: 11902}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 12122}
+      Script: {instanceID: 12448}
     - Class: 114
-      Script: {instanceID: 12236}
+      Script: {instanceID: 12592}
     - Class: 114
-      Script: {instanceID: 12380}
+      Script: {instanceID: 12762}
     - Class: 114
-      Script: {instanceID: 12504}
+      Script: {instanceID: 12922}
     - Class: 114
-      Script: {instanceID: 12620}
+      Script: {instanceID: 13072}
     - Class: 114
-      Script: {instanceID: 12974}
+      Script: {instanceID: 13518}
     - Class: 114
-      Script: {instanceID: 13084}
+      Script: {instanceID: 13676}
     - Class: 114
-      Script: {instanceID: 13134}
+      Script: {instanceID: 13740}
     - Class: 114
-      Script: {instanceID: 13406}
+      Script: {instanceID: 14086}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -320,7 +316,7 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 13140}
+      Script: {instanceID: 13746}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -430,6 +426,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChatGui
+  - hash:
+      serializedVersion: 2
+      Hash: 9c7c87712e298256d276eb96e02a57b1
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: PreferenceDictionary
   - hash:
       serializedVersion: 2
       Hash: a5565e1bd9c3bd39bdb8f736fbc67fbd
@@ -564,6 +566,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: f6633ace6e530c0000f2ac6da4269c52
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: PolyShape
+  - hash:
+      serializedVersion: 2
       Hash: b1f26da3046d8b188758169a9d6b1078
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.SlotRacer.Utils
@@ -660,6 +668,12 @@ ScriptsOnlyBuild:
     className: PhotonHandler
   - hash:
       serializedVersion: 2
+      Hash: 36f96c190e244321e128769d9c5120ac
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: ProBuilderMesh
+  - hash:
+      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -724,6 +738,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 32f6d1d5a09e5c94c633a32edd3e6836
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: BezierShape
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -924,10 +944,22 @@ ScriptsOnlyBuild:
     className: PlayerOverviewPanel
   - hash:
       serializedVersion: 2
+      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: TriggerBehaviour
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: ColliderBehaviour
   - hash:
       serializedVersion: 2
       Hash: 7602c8d40ade510f4c0e781c7062b246
@@ -1200,6 +1232,12 @@ ScriptsOnlyBuild:
     className: PlayerUI
   - hash:
       serializedVersion: 2
+      Hash: d6a8e9bec3160a152b9b2710593d3caa
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: ColorPalette
+  - hash:
+      serializedVersion: 2
       Hash: 7fe1677739b73c9b6f63468e0b5fed5c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1338,6 +1376,12 @@ ScriptsOnlyBuild:
     className: ServerProperty
   - hash:
       serializedVersion: 2
+      Hash: 301f4da7cc3b301c161d089f9d22efed
+    assemblyName: Unity.ProBuilder.dll
+    namespaceName: UnityEngine.ProBuilder
+    className: Entity
+  - hash:
+      serializedVersion: 2
       Hash: d2a2698b314a20912af1eb2b1758dc90
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
@@ -1398,7 +1442,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 13cbd4d9953f4d676f0797c85daaaeb0
+      Hash: b56a6c32aecbbfa02df2890731b525c7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ControlaJogador
@@ -1608,6 +1652,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomAutoCleanupProperty
   - hash:
       serializedVersion: 2
+      Hash: 00f31ce0185928d77d632185bcb3200b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerS
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -1798,60 +1848,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 9c7c87712e298256d276eb96e02a57b1
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: PreferenceDictionary
-  - hash:
-      serializedVersion: 2
-      Hash: f6633ace6e530c0000f2ac6da4269c52
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: PolyShape
-  - hash:
-      serializedVersion: 2
-      Hash: 36f96c190e244321e128769d9c5120ac
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ProBuilderMesh
-  - hash:
-      serializedVersion: 2
-      Hash: 32f6d1d5a09e5c94c633a32edd3e6836
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: BezierShape
-  - hash:
-      serializedVersion: 2
-      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: TriggerBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: e9389e944eb81a3a9df56fcdb09ce6a9
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ColliderBehaviour
-  - hash:
-      serializedVersion: 2
-      Hash: d6a8e9bec3160a152b9b2710593d3caa
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: ColorPalette
-  - hash:
-      serializedVersion: 2
-      Hash: 301f4da7cc3b301c161d089f9d22efed
-    assemblyName: Unity.ProBuilder.dll
-    namespaceName: UnityEngine.ProBuilder
-    className: Entity
-  - hash:
-      serializedVersion: 2
-      Hash: 00f31ce0185928d77d632185bcb3200b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerS
   platform: 5
   scenePathNames:
   - Assets/Scenes/LoginScene.unity

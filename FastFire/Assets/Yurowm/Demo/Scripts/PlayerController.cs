@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 [RequireComponent (typeof (Animator))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviourPunCallbacks
+{
 
 	public Transform rightGunBone;
 	public Transform leftGunBone;

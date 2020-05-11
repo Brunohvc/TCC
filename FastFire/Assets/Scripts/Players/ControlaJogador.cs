@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.IO;
 
 public class ControlaJogador : MonoBehaviourPunCallbacks
 {
@@ -17,7 +18,13 @@ public class ControlaJogador : MonoBehaviourPunCallbacks
 
     public GameObject camera;
     PlayerController controller;
+    Actions actions;
     public GameObject character;
+
+    public Transform rightGunBone;
+    private Transform spawnBulletPoint;
+
+    public Transform bulletPrefab;
 
     //Input
     protected PlayerS Player;
@@ -36,27 +43,23 @@ public class ControlaJogador : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        camera.SetActive(photonView.IsMine);
-        if (!photonView.IsMine) return;
         controller = character.GetComponent<PlayerController>();
-        /*
+        controller.SetArsenal("Rifle");
         camera.SetActive(photonView.IsMine);
         if (!photonView.IsMine) return;
-
         actions = character.GetComponent<Actions>();
 
-        distanciaCompensar = camera.transform.position - transform.position;
-        */
         controller.SetArsenal("Rifle");
+        Player = FindObjectOfType<PlayerS>();
+
         
 
-        Player = FindObjectOfType<PlayerS>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // controller.SetArsenal("Rifle");
         if (!photonView.IsMine) return;
         /*
         float eixoX = Input.GetAxis("Horizontal");
@@ -91,10 +94,48 @@ public class ControlaJogador : MonoBehaviourPunCallbacks
         var characterForward = Quaternion.AngleAxis(InputRotationX, Vector3.up) * Vector3.forward;
         var characterLeft = Quaternion.AngleAxis(InputRotationX + 90, Vector3.up) * Vector3.forward;
 
+
+
         //look and run direction
         var runDirection = characterForward * (Input.GetAxisRaw("Vertical")) + characterLeft * (Input.GetAxisRaw("Horizontal"));
         LookDirection = Quaternion.AngleAxis(InputRotationY, characterLeft) * characterForward;
 
+        if(runDirection.x != 0 || runDirection.y != 0 || runDirection.z != 0)
+        {
+            actions.Walk();
+        }
+        else
+        {
+            actions.Stay();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Pressed primary button.");
+            actions.Attack();
+
+            // spawnBulletPoint
+
+
+
+            Debug.Log(rightGunBone.name);
+            Debug.Log(rightGunBone.GetChild(0).name);
+            Debug.Log(rightGunBone.GetChild(0).GetChild(0).name);
+
+
+            spawnBulletPoint = rightGunBone.GetChild(0).GetChild(0);
+            Debug.Log(spawnBulletPoint.transform);
+
+            //Spawn bullet from bullet spawnpoint
+            var bullet = (Transform)PhotonNetwork.Instantiate(
+                Path.Combine("PhotonPrefabs", "Bullet_Prefab"),
+                spawnBulletPoint.transform.position,
+                spawnBulletPoint.transform.rotation).transform;
+
+            //Add velocity to the bullet
+            bullet.GetComponent<Rigidbody>().velocity =
+                bullet.transform.forward * 50;
+        }
 
         //set player values
         Player.Input.RunX = runDirection.x;
