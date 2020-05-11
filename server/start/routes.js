@@ -17,3 +17,9 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.group(() => {
+    Route.resource('users', 'UserController')
+    Route.post('users/login', 'UserController.login')
+    Route.post('users/store', 'UserController.store')
+}).prefix('api/v1')
