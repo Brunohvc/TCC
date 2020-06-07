@@ -88,9 +88,11 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Scripts\Animations\VerifyAction.cs" />
     <Compile Include="Assets\Scripts\DelayStartMenu\DelayStartLobbyController.cs" />
     <Compile Include="Assets\Scripts\DelayStartMenu\DelayStartRoomController.cs" />
     <Compile Include="Assets\Scripts\DelayStartWaiting\DelayStartWaitingRoomController.cs" />
+    <Compile Include="Assets\Scripts\Effects\DestroyEffects.cs" />
     <Compile Include="Assets\Scripts\GameSetupController.cs" />
     <Compile Include="Assets\Scripts\Login\LobbyControllerLogin.cs" />
     <Compile Include="Assets\Scripts\Main\MainLobbyController.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Assets\Scripts\Player\MoveHeadOnWalk.cs" />
     <Compile Include="Assets\Scripts\Player\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Player\RotationCamera.cs" />
+    <Compile Include="Assets\Scripts\Player\UIManager.cs" />
     <Compile Include="Assets\Scripts\Player_Old\ControlaJogador.cs" />
     <Compile Include="Assets\Scripts\Player_Old\ControlaJogadorOld3.cs" />
     <Compile Include="Assets\Scripts\Player_Old\ControlaJogadorOld_2.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Assets\Scripts\QuickStart\QuickStartRoomController.cs" />
     <Compile Include="Assets\Scripts\RayCast\DragAndCatchRayCastScript.cs" />
     <Compile Include="Assets\Scripts\RayCast\RayCastActions.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Glock.cs" />
     <Compile Include="Assets\Scripts\Weapons\MoveWeapon.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\Actions.cs" />
     <Compile Include="Assets\Yurowm\Demo\Scripts\CharacterPanel.cs" />
@@ -120,7 +124,8 @@
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\FirstPersion AIO Pack\README.txt" />
     <None Include="Assets\Yurowm\Shaders\SkinShader.shader" />
-    <None Include="Assets\Outline\Outline.shader" />
+    <None Include="Assets\Prefabs\Sprites e Fonte\LinkParaDownloadFont.txt" />
+    <None Include="Assets\Prefabs\Outline\Outline.shader" />
     <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
     <None Include="Assets\ToonSoldiers_WW2_demo\ToonSoldiers_WW2_demo_README.txt" />
     <None Include="Assets\Photon\PhotonLibs\changes-library.txt" />
