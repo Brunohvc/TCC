@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public Text gunName;
     public Image typeFire;
     public Sprite[] spriteTypeFire;
+    public RectTransform corsshair;
 
 
     // Start is called before the first frame update

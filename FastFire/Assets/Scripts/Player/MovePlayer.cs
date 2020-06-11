@@ -13,6 +13,9 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     public float jumpHeight = 3f;
     public float gravity = -20f;
     public bool isRunning = false;
+    public AudioClip[] jumpSound;
+    public AudioSource jumpAudio;
+    public bool upInTheAir = false;
 
     [Header("Verify Floor")]
     public Transform checkFloor;
@@ -51,6 +54,21 @@ public class MovePlayer : MonoBehaviourPunCallbacks
         Jump();
         VerifyTurnDown();
         VerifyTiredOut();
+        SoundJump();
+    }
+
+    void SoundJump()
+    {
+        if (!isOnFloor)
+        {
+            upInTheAir = true;
+        }
+        if(isOnFloor && upInTheAir)
+        {
+            upInTheAir = false;
+            jumpAudio.clip = jumpSound[1];
+            jumpAudio.Play();
+        }
     }
 
 
@@ -106,6 +124,8 @@ public class MovePlayer : MonoBehaviourPunCallbacks
         if (Input.GetButtonDown("Jump") && isOnFloor)
         {
             fallSpeed.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jumpAudio.clip = jumpSound[0];
+            jumpAudio.Play();
         }
 
         fallSpeed.y += gravity * Time.deltaTime;

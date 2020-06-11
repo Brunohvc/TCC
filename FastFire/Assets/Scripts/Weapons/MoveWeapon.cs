@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveWeapon : MonoBehaviour
 {
     public float value;
+    float defaultvalue;
     public float softensValue;
     public float maxValue;
     Vector3 startinfPosition;
@@ -14,6 +15,7 @@ public class MoveWeapon : MonoBehaviour
     void Start()
     {
         startinfPosition = transform.localPosition;
+        defaultvalue = value;
     }
 
     // Update is called once per frame
@@ -28,5 +30,10 @@ public class MoveWeapon : MonoBehaviour
         Vector3 finalPosition = new Vector3(movementX, movementY, 0);
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + startinfPosition, Time.deltaTime * softensValue);
+    }
+
+    public void SetValueToDefault()
+    {
+        value = defaultvalue;
     }
 }
