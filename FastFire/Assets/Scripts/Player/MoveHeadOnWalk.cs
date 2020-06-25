@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MoveHeadOnWalk : MonoBehaviour
+public class MoveHeadOnWalk : MonoBehaviourPunCallbacks
 {
     private float time = 0f;
     public float speed = 0.15f;
@@ -24,6 +25,7 @@ public class MoveHeadOnWalk : MonoBehaviour
 
     private void Start()
     {
+        if (!photonView.IsMine) return;
         scripMovePlayer = GetComponentInParent<MovePlayer>();
         defaultSpeed = speed;
         defaultForce = force;
@@ -31,6 +33,7 @@ public class MoveHeadOnWalk : MonoBehaviour
 
     void Update()
     {
+        if (!photonView.IsMine) return;
         resetMovment = 0;
 
         horizontal = Input.GetAxis("Horizontal");

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class DragAndCatchRayCastScript : MonoBehaviour
+public class DragAndCatchRayCastScript : MonoBehaviourPunCallbacks
 {
     public float targetDistance;
     public GameObject dragObject, catchObject;
@@ -14,7 +15,8 @@ public class DragAndCatchRayCastScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.frameCount % 5 == 0)
+        if (!photonView.IsMine) return;
+        if (Time.frameCount % 5 == 0)
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 5, Color.red);
 

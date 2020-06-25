@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Glock : MonoBehaviour
+public class Glock : MonoBehaviourPunCallbacks
 {
     Animator animator;
     bool shootting = false;
@@ -30,9 +31,15 @@ public class Glock : MonoBehaviour
     public float sizeCrosshair = 300f;
     float defaultSizeCrosshair = 300f;
 
+    public float bulletForce = 400.0f;
+    public Transform bulletPrefab;
+    public Transform bulletSpawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (!photonView.IsMine) return;
+
         defaultAmmunition = ammunition;
         totalAmmunition = defaultAmmunition * loader;
         animator = GetComponent<Animator>();
@@ -45,6 +52,8 @@ public class Glock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         ModifyCorsshair();
         uiScript.gunName.text = "Glock 18";
 
@@ -67,10 +76,19 @@ public class Glock : MonoBehaviour
                 Debug.Log("Atirou");
                 audioGun.clip = gunSounds[0];
                 audioGun.Play();
-                bulletTrail.Play();
+                // bulletTrail.Play();
                 shootting = true;
                 StartCoroutine(Shoot());
                 ammunition--;
+
+                var bullet = (Transform)Instantiate(
+                    bulletPrefab,
+                    bulletSpawnPoint.transform.position,
+                    bulletSpawnPoint.transform.rotation);
+
+                //Add velocity to the bullet
+                bullet.GetComponent<Rigidbody>().velocity =
+                    bullet.transform.forward * bulletForce;
             }
             else if (!shootting && ammunition == 0 && totalAmmunition > 0)
             {

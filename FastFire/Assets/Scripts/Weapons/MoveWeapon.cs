@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MoveWeapon : MonoBehaviour
+public class MoveWeapon : MonoBehaviourPunCallbacks
 {
     public float value;
     float defaultvalue;
@@ -14,6 +15,8 @@ public class MoveWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!photonView.IsMine) return;
+
         startinfPosition = transform.localPosition;
         defaultvalue = value;
     }
@@ -21,6 +24,8 @@ public class MoveWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         float movementX = -Input.GetAxis("Mouse X") * value;
         float movementY = -Input.GetAxis("Mouse Y") * value;
 

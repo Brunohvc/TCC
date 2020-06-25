@@ -16,6 +16,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     public AudioClip[] jumpSound;
     public AudioSource jumpAudio;
     public bool upInTheAir = false;
+    public GameObject character;
 
     [Header("Verify Floor")]
     public Transform checkFloor;
@@ -42,12 +43,15 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        if (!photonView.IsMine) return;
+        character.SetActive(false);
         defaultSpeed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
         isOnFloor = Physics.CheckSphere(checkFloor.position, SphereRadius, floorMask);
         VerifyIsRunning();
         Walk();
