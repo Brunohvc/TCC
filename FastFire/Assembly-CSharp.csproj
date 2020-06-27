@@ -86,7 +86,6 @@
      <Compile Include="Assets\Scripts\GameSetupController.cs" />
      <Compile Include="Assets\Scripts\Login\LobbyControllerLogin.cs" />
      <Compile Include="Assets\Scripts\Login\Login.cs" />
-     <Compile Include="Assets\Scripts\Login\User.cs" />
      <Compile Include="Assets\Scripts\Main\MainLobbyController.cs" />
      <Compile Include="Assets\Scripts\Main\MainRoomController.cs" />
      <Compile Include="Assets\Scripts\Main\RoomButton.cs" />

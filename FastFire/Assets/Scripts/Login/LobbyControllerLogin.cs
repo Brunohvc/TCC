@@ -13,13 +13,25 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject loginData;
     [SerializeField]
+    private GameObject loginPanel;
+    [SerializeField]
+    private GameObject registerPanel;
+    [SerializeField]
+    public GameObject erroLogin;
+    [SerializeField]
+    public GameObject erroRegister;
+    [SerializeField]
     public InputField playerLoginInput;
     [SerializeField]
     private InputField playerPasswordInput;
-
+    [SerializeField]
+    public InputField registerLoginInput;
+    [SerializeField]
+    private InputField registerPasswordInput;
+    [SerializeField]
+    private InputField registerPasswordConfirmationInput;
     [SerializeField]
     private int LobbySceneIndex;
-
 
     public override void OnConnectedToMaster()
     {
@@ -27,6 +39,7 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
 
         loginData.SetActive(true);
         connectText.SetActive(false);
+        registerPanel.SetActive(false);
 
         if (PlayerPrefs.HasKey("Login"))
         {
@@ -55,12 +68,19 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         playerPasswordInput.text = passwordInput;
     }
 
+    public void SwitchToRegisterPanel()
+    {
+        loginPanel.SetActive(false);
+        registerPanel.SetActive(true);
+    }
+
     public void LoginOnClick()
     {
         if (playerLoginInput.text != "" && playerPasswordInput.text != "")
         {
+            erroLogin.SetActive(false);
             // make login
-            LogonServer();
+            SendRequestServer("login", playerLoginInput.text, playerPasswordInput.text);
             PlayerPrefs.SetString("Login", playerLoginInput.text);
             PlayerPrefs.SetString("Password", playerPasswordInput.text);
             PhotonNetwork.NickName = playerLoginInput.text;
@@ -69,9 +89,26 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         }
     }
 
-    public void LogonServer()
+    public void RegisterOnClick()
     {
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:3333/api/v1/users/login");
+        // muda o panel
+        if (registerLoginInput.text != "" && registerPasswordInput.text != "" && registerPasswordConfirmationInput.text != "")
+        {
+            if (!registerPasswordInput.text.Equals(registerPasswordConfirmationInput.text))
+            {
+                // message to correct the password
+            }
+
+            SendRequestServer("store", registerLoginInput.text, registerPasswordInput.text);
+        }
+
+        registerPanel.SetActive(false);
+        loginPanel.SetActive(true);
+    }
+
+    public void SendRequestServer(string action, string loginInput, string passwordInput)
+    {
+        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:3333/api/v1/users/" + action);
         httpWebRequest.ContentType = "application/json";
         httpWebRequest.Method = "POST";
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -79,8 +116,10 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
         {
             Login login = new Login();
-            login.email = "zanghelinigab@gmail.com"; // playerLoginInput.text;
-            login.password = "123456"; // playerPasswordInput.text
+            login.email = loginInput;
+            login.password = passwordInput;
+            //login.email = "zanghelinigab@gmail.com";
+            //login.password = "123456";
 
             string json = JsonUtility.ToJson(login);
 
@@ -96,6 +135,8 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             Login loginResult = JsonUtility.FromJson<Login>(result);
             if (!loginResult.message.Contains("Success"))
             {
+                erroLogin.SetActive(true);
+                erroRegister.SetActive(true);
                 throw new System.Exception("Login failed");
             }
         }
