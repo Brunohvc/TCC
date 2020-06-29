@@ -96,19 +96,26 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         {
             if (!registerPasswordInput.text.Equals(registerPasswordConfirmationInput.text))
             {
-                // message to correct the password
+                erroRegister.GetComponent<Text>().text = "Password is different than password confirmation";
+                erroRegister.SetActive(true);
+            } else
+            {
+                SendRequestServer("store", registerLoginInput.text, registerPasswordInput.text);
+                registerPanel.SetActive(false);
+                loginPanel.SetActive(true);
+                loginData.SetActive(true);
+                connectText.SetActive(false);
             }
-
-            SendRequestServer("store", registerLoginInput.text, registerPasswordInput.text);
+        } else
+        {
+            erroRegister.GetComponent<Text>().text = "Fill in all fields";
+            erroRegister.SetActive(true);
         }
-
-        registerPanel.SetActive(false);
-        loginPanel.SetActive(true);
     }
 
     public void SendRequestServer(string action, string loginInput, string passwordInput)
     {
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:3333/api/v1/users/" + action);
+        var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://fast-fire.herokuapp.com/api/v1/users/" + action);
         httpWebRequest.ContentType = "application/json";
         httpWebRequest.Method = "POST";
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -118,8 +125,6 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             Login login = new Login();
             login.email = loginInput;
             login.password = passwordInput;
-            //login.email = "zanghelinigab@gmail.com";
-            //login.password = "123456";
 
             string json = JsonUtility.ToJson(login);
 
@@ -135,9 +140,11 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             Login loginResult = JsonUtility.FromJson<Login>(result);
             if (!loginResult.message.Contains("Success"))
             {
+                erroLogin.GetComponent<Text>().text = loginResult.message;
+                erroRegister.GetComponent<Text>().text = loginResult.message;
                 erroLogin.SetActive(true);
                 erroRegister.SetActive(true);
-                throw new System.Exception("Login failed");
+                throw new System.Exception("Server fail: " + loginResult.message);
             }
         }
     }
