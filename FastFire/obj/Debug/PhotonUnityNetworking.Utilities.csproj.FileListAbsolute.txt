@@ -275,3 +275,7 @@ C:\Users\bruno\projetos\GitHub\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Util
 C:\Users\bruno\projetos\GitHub\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Utilities.csproj.CopyComplete
 C:\Users\bruno\projetos\GitHub\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Utilities.dll
 C:\Users\bruno\projetos\GitHub\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Utilities.pdb
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.UWP.Extensions.dll
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.WebGL.Extensions.dll
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.WebGL.Extensions.pdb
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.UWP.Extensions.pdb

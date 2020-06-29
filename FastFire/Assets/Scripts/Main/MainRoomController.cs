@@ -102,7 +102,7 @@ public class MainRoomController : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LeaveLobby();
+        // PhotonNetwork.LeaveLobby();
         StartCoroutine(rejoinLobby());
     }
 }

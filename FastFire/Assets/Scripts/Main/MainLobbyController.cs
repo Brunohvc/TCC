@@ -5,11 +5,14 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MainLobbyController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject lobbyPanel;
+
+    public Text userNameField;
 
     private string roomName = "Sala 1";
     private int roomSize = 4;
@@ -24,6 +27,7 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
     {
         lobbyPanel.SetActive(true);
         roomListings = new List<RoomInfo>();
+        userNameField.text = PhotonNetwork.NickName;
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -98,7 +102,8 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
 
     public void LogOut()
     {
-        PhotonNetwork.LeaveLobby();
         SceneManager.LoadScene(0);
+        PhotonNetwork.LeaveLobby();
+        PhotonNetwork.Disconnect();
     }
 }

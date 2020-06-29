@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LobbyControllerLogin : MonoBehaviourPunCallbacks
 {
@@ -20,8 +21,12 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
     [SerializeField]
     private int LobbySceneIndex;
 
-
     public override void OnConnectedToMaster()
+    {
+        openLoginScreen();
+    }
+
+    void openLoginScreen()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
 
@@ -30,7 +35,7 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
 
         if (PlayerPrefs.HasKey("Login"))
         {
-            if(PlayerPrefs.GetString("Login") != "")
+            if (PlayerPrefs.GetString("Login") != "")
             {
                 playerLoginInput.text = PlayerPrefs.GetString("Login");
             }
