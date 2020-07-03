@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class MoveHeadOnWalk : MonoBehaviour
+public class MoveHeadOnWalk : MonoBehaviourPunCallbacks
 {
     private float time = 0f;
     public float speed = 0.15f;
+    float defaultSpeed = 0.15f;
     public float force = 0.1f;
+    float defaultForce = 0.1f;
     public float originPoint = 0f;
 
     float resetMovment;
@@ -18,11 +21,19 @@ public class MoveHeadOnWalk : MonoBehaviour
     public AudioClip[] audioClip;
     public int indexSteps = 0;
 
-    public MovePlayer movePlayerScript;
+    MovePlayer scripMovePlayer;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        if (!photonView.IsMine) return;
+        scripMovePlayer = GetComponentInParent<MovePlayer>();
+        defaultSpeed = speed;
+        defaultForce = force;
+    }
+
     void Update()
     {
+        if (!photonView.IsMine) return;
         resetMovment = 0;
 
         horizontal = Input.GetAxis("Horizontal");
@@ -62,11 +73,12 @@ public class MoveHeadOnWalk : MonoBehaviour
         transform.localPosition = savePosition;
 
         StepsSound();
+        updateHead();
     }
 
     void StepsSound()
     {
-        if(resetMovment <= -0.95f && !audioSource.isPlaying && movePlayerScript.isOnFloor)
+        if(resetMovment <= -0.95f && !audioSource.isPlaying && scripMovePlayer.isOnFloor)
         {
             audioSource.clip = audioClip[indexSteps];
             audioSource.Play();
@@ -78,5 +90,24 @@ public class MoveHeadOnWalk : MonoBehaviour
                 indexSteps = 0;
             }
         } 
+    }
+
+    void updateHead()
+    {
+        if (scripMovePlayer.isRunning)
+        {
+            speed = defaultSpeed * 1.5f;
+            force = defaultForce * 1.15f; 
+        }
+        else if (scripMovePlayer.isLowered)
+        {
+            speed = defaultSpeed * 0.75f;
+            force = defaultForce * 0.70f;
+        }
+        else
+        {
+            speed = defaultSpeed;
+            force = defaultForce;
+        }
     }
 }

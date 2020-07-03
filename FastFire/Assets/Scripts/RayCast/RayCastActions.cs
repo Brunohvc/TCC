@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 [RequireComponent(typeof(DragAndCatchRayCastScript))]
-public class RayCastActions : MonoBehaviour
+public class RayCastActions : MonoBehaviourPunCallbacks
 {
     DragAndCatchRayCastScript rayCastScript;
     public bool took;
@@ -15,6 +16,7 @@ public class RayCastActions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!photonView.IsMine) return;
         rayCastScript = GetComponent<DragAndCatchRayCastScript>();
         took = false;
     }
@@ -22,6 +24,7 @@ public class RayCastActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
         distance = rayCastScript.targetDistance;
 
         if(distance <= 3)

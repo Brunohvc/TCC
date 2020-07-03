@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Breath : MonoBehaviour
+public class Breath : MonoBehaviourPunCallbacks
 {
     public bool isInspiring = true;
     public float heightMin = -0.35f, heightMax = 0.35f;
@@ -16,6 +17,8 @@ public class Breath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         if (isInspiring)
         {
             movement = Mathf.Lerp(movement, heightMax, Time.deltaTime * 1 * breathForce);

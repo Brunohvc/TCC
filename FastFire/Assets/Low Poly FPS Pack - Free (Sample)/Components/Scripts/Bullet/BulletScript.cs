@@ -2,7 +2,7 @@
 using System.Collections;
 
 // ----- Low Poly FPS Pack Free Version -----
-public class BulletScript : MonoBehaviour {
+public class BulletScriptOld : MonoBehaviour {
 
 	[Range(5, 100)]
 	[Tooltip("After how long time should the bullet prefab be destroyed?")]

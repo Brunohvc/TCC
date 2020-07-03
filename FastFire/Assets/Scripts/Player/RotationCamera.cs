@@ -14,6 +14,9 @@ public class RotationCamera : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        GetComponentInChildren<Camera>().gameObject.SetActive(photonView.IsMine);
+        if (!photonView.IsMine) return;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -21,6 +24,8 @@ public class RotationCamera : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
