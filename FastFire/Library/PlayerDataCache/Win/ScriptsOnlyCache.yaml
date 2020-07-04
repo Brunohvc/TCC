@@ -43,9 +43,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PhotonTransformViewEditor
-    - Photon.Pun.PhotonViewInspector
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -1219,7 +1216,7 @@ ScriptsOnlyBuild:
     className: OnClickDestroy
   - hash:
       serializedVersion: 2
-      Hash: a7c2cf54423d8d271b4439822343b940
+      Hash: 48467ae36ebc4e4a80e213b42df54dad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MovePlayer
@@ -1699,7 +1696,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 49eb08396ec5ba54da8002951b9f59d9
+      Hash: 863fb5925b8f3c3f14a3301841f954b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainLobbyController

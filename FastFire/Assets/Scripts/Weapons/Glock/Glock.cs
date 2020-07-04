@@ -38,12 +38,12 @@ public class Glock : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        audioGun = GetComponent<AudioSource>();
         if (!photonView.IsMine) return;
 
         defaultAmmunition = ammunition;
         totalAmmunition = defaultAmmunition * loader;
         animator = GetComponent<Animator>();
-        audioGun = GetComponent<AudioSource>();
         uiScript = GameObject.FindWithTag("uiManager").GetComponent<UIManager>();
         moveWeaponScript = GetComponentInParent<MoveWeapon>();
         defaultSizeCrosshair = sizeCrosshair;
@@ -73,7 +73,6 @@ public class Glock : MonoBehaviourPunCallbacks
         {
             if (!shootting && ammunition > 0)
             {
-                Debug.Log("Atirou");
                 audioGun.clip = gunSounds[0];
                 audioGun.Play();
                 // bulletTrail.Play();
@@ -105,7 +104,9 @@ public class Glock : MonoBehaviourPunCallbacks
     {
         if ((Input.GetKeyDown(KeyCode.R) || tryFire) && totalAmmunition > 0 && ammunition < defaultAmmunition)
         {
-            animator.Play("reload");
+            animator.SetBool("actionOccurs", true);
+            animator.SetBool("reload", true);
+            // animator.Play("reload");
 
             totalAmmunition += ammunition;
 
@@ -144,7 +145,9 @@ public class Glock : MonoBehaviourPunCallbacks
         float screenY = Screen.height / 2;
 
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(screenX, screenY));
-        animator.Play("shoot");
+        animator.SetBool("actionOccurs", true);
+        animator.SetBool("shoot", true);
+        // animator.Play("shoot");
 
         GameObject shootEffectObj = Instantiate(shotEffect, positionShotEffect.transform.position, positionShotEffect.transform.rotation);
         shootEffectObj.transform.parent = positionShotEffect.transform;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MovePlayer : MonoBehaviourPunCallbacks
 {
@@ -39,10 +40,13 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     public float stamina = 100;
     bool tiredOut = false;
     public Breath breathScript;
+    public GameObject canvasPlayer;
+    public GameObject options;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvasPlayer.SetActive(photonView.IsMine);
         if (!photonView.IsMine) return;
         character.SetActive(false);
         defaultSpeed = speed;
@@ -52,6 +56,8 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     void Update()
     {
         if (!photonView.IsMine) return;
+        VerifyOptions();
+        if (options.activeInHierarchy) return;
         isOnFloor = Physics.CheckSphere(checkFloor.position, SphereRadius, floorMask);
         VerifyIsRunning();
         Walk();
@@ -67,7 +73,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
         {
             upInTheAir = true;
         }
-        if(isOnFloor && upInTheAir)
+        if (isOnFloor && upInTheAir)
         {
             upInTheAir = false;
             jumpAudio.clip = jumpSound[1];
@@ -106,13 +112,13 @@ public class MovePlayer : MonoBehaviourPunCallbacks
 
     void VerifyTiredOut()
     {
-        if(stamina == 0)
+        if (stamina == 0)
         {
             tiredOut = true;
             breathScript.breathForce = 5;
         }
 
-        if(stamina > 20)
+        if (stamina > 20)
         {
             tiredOut = false;
         }
@@ -120,7 +126,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
 
     void Jump()
     {
-        if(isOnFloor && fallSpeed.y < 0)
+        if (isOnFloor && fallSpeed.y < 0)
         {
             fallSpeed.y = -2f;
         }
@@ -157,7 +163,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
 
     void TurnDown()
     {
-        isLowered = !isLowered;   
+        isLowered = !isLowered;
     }
 
     void TurnDownMovment()
@@ -181,7 +187,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
 
     void checkBlockLowered()
     {
-        if(Physics.Raycast(cameraTransform.position, Vector3.up, out hit, 1.1f))
+        if (Physics.Raycast(cameraTransform.position, Vector3.up, out hit, 1.1f))
         {
             riseBlocked = true;
         }
@@ -195,5 +201,29 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(checkFloor.position, SphereRadius);
+    }
+    public void VerifyOptions()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            options.SetActive(!options.activeInHierarchy);
+
+            if (options.activeInHierarchy)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+    }
+
+    public void LeaveRoom()
+    {
+        SceneManager.LoadScene(1);
+        PhotonNetwork.LeaveRoom();
     }
 }

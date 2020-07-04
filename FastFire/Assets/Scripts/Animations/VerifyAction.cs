@@ -20,6 +20,8 @@ public class VerifyAction : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("actionOccurs", true);
+        animator.SetBool("reload", false);
+        animator.SetBool("shoot", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
