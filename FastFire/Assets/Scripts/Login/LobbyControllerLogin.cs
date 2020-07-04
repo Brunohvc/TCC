@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine.SceneManagement;
-using System.Net;
-using System.IO;
-using Assets.Scripts.Login;
+using System;
 
 public class LobbyControllerLogin : MonoBehaviourPunCallbacks
 {
@@ -13,37 +14,28 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject loginData;
     [SerializeField]
-    private GameObject loginPanel;
-    [SerializeField]
-    private GameObject registerPanel;
-    [SerializeField]
-    public GameObject erroLogin;
-    [SerializeField]
-    public GameObject erroRegister;
-    [SerializeField]
     public InputField playerLoginInput;
     [SerializeField]
     private InputField playerPasswordInput;
-    [SerializeField]
-    public InputField registerLoginInput;
-    [SerializeField]
-    private InputField registerPasswordInput;
-    [SerializeField]
-    private InputField registerPasswordConfirmationInput;
+
     [SerializeField]
     private int LobbySceneIndex;
 
     public override void OnConnectedToMaster()
     {
+        openLoginScreen();
+    }
+
+    void openLoginScreen()
+    {
         PhotonNetwork.AutomaticallySyncScene = true;
 
         loginData.SetActive(true);
         connectText.SetActive(false);
-        registerPanel.SetActive(false);
 
         if (PlayerPrefs.HasKey("Login"))
         {
-            if(PlayerPrefs.GetString("Login") != "")
+            if (PlayerPrefs.GetString("Login") != "")
             {
                 playerLoginInput.text = PlayerPrefs.GetString("Login");
             }
@@ -68,19 +60,10 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
         playerPasswordInput.text = passwordInput;
     }
 
-    public void SwitchToRegisterPanel()
-    {
-        loginPanel.SetActive(false);
-        registerPanel.SetActive(true);
-    }
-
     public void LoginOnClick()
     {
-        if (playerLoginInput.text != "" && playerPasswordInput.text != "")
+        if (playerLoginInput.text != "")
         {
-            erroLogin.SetActive(false);
-            // make login
-            SendRequestServer("login", playerLoginInput.text, playerPasswordInput.text);
             PlayerPrefs.SetString("Login", playerLoginInput.text);
             PlayerPrefs.SetString("Password", playerPasswordInput.text);
             PhotonNetwork.NickName = playerLoginInput.text;
@@ -88,65 +71,4 @@ public class LobbyControllerLogin : MonoBehaviourPunCallbacks
             PhotonNetwork.JoinLobby();
         }
     }
-
-    public void RegisterOnClick()
-    {
-        // muda o panel
-        if (registerLoginInput.text != "" && registerPasswordInput.text != "" && registerPasswordConfirmationInput.text != "")
-        {
-            if (!registerPasswordInput.text.Equals(registerPasswordConfirmationInput.text))
-            {
-                erroRegister.GetComponent<Text>().text = "Password is different than password confirmation";
-                erroRegister.SetActive(true);
-            } else
-            {
-                SendRequestServer("store", registerLoginInput.text, registerPasswordInput.text);
-                registerPanel.SetActive(false);
-                loginPanel.SetActive(true);
-                loginData.SetActive(true);
-                connectText.SetActive(false);
-            }
-        } else
-        {
-            erroRegister.GetComponent<Text>().text = "Fill in all fields";
-            erroRegister.SetActive(true);
-        }
-    }
-
-    public void SendRequestServer(string action, string loginInput, string passwordInput)
-    {
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://fast-fire.herokuapp.com/api/v1/users/" + action);
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-
-        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            Login login = new Login();
-            login.email = loginInput;
-            login.password = passwordInput;
-
-            string json = JsonUtility.ToJson(login);
-
-            streamWriter.Write(json);
-            streamWriter.Flush();
-            streamWriter.Close();
-        }
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-        {
-            var result = streamReader.ReadToEnd();
-            Login loginResult = JsonUtility.FromJson<Login>(result);
-            if (!loginResult.message.Contains("Success"))
-            {
-                erroLogin.GetComponent<Text>().text = loginResult.message;
-                erroRegister.GetComponent<Text>().text = loginResult.message;
-                erroLogin.SetActive(true);
-                erroRegister.SetActive(true);
-                throw new System.Exception("Server fail: " + loginResult.message);
-            }
-        }
-    }
-
 }
