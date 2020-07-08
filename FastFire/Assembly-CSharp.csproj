@@ -127,46 +127,46 @@
      <None Include="Assets\Photon\PhotonLibs\Photon3Unity3D.xml" />
      <None Include="Assets\Photon\PhotonUnityNetworking\link.xml" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AddOns.Editor">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Users/bruno/projetos/Unity/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -346,10 +346,10 @@
  <HintPath>C:/Users/bruno/projetos/Unity/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>C:/Users/bruno/projetos/GitHub/TCC/FastFire/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>C:/Users/bruno/projetos/GitHub/TCC3/FastFire/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Users/bruno/projetos/Unity/2019.3.3f1/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
