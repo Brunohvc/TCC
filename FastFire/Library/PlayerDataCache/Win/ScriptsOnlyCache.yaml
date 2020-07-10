@@ -1462,7 +1462,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 91e72e9a88db1e19e17a8d80a7f2bb6d
+      Hash: 601cb07af44d2c94086b430b1b5ade38
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LobbyControllerLogin
@@ -1987,4 +1987,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/LoginScene.unity
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/MultiplayerSceneDemo.unity
-  playerPath: C:/Users/bruno/Desktop/FastFire/FastFire.exe
+  playerPath: C:/Users/jefeg/Desktop/FastFire/FastFire.exe
