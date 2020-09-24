@@ -31,7 +31,7 @@ public class ExplosiveBarrelScript : MonoBehaviour {
 	
 	private void Update () {
 		//Generate random time based on min and max time values
-		randomTime = Random.Range (minTime, maxTime);
+		randomTime = Random.Range(minTime, maxTime);
 
 		//If the barrel is hit
 		if (explode == true) 

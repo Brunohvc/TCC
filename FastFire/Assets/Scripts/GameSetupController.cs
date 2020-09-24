@@ -16,7 +16,6 @@ public class GameSetupController : MonoBehaviour
     {
         System.Random randNum = new System.Random();
 
-        Debug.Log("Creating Player");
         var x = randNum.Next(-80, 100);
         var y = 35;
         var z = randNum.Next(-90, 80);

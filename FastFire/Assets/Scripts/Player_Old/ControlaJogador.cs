@@ -111,20 +111,9 @@ public class ControlaJogador : MonoBehaviourPunCallbacks
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Pressed primary button.");
             actions.Attack();
 
-            // spawnBulletPoint
-
-
-
-            Debug.Log(rightGunBone.name);
-            Debug.Log(rightGunBone.GetChild(0).name);
-            Debug.Log(rightGunBone.GetChild(0).GetChild(0).name);
-
-
             spawnBulletPoint = rightGunBone.GetChild(0).GetChild(0);
-            Debug.Log(spawnBulletPoint.transform);
 
             //Spawn bullet from bullet spawnpoint
             var bullet = (Transform)PhotonNetwork.Instantiate(

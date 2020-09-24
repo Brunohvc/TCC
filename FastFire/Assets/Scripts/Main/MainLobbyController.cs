@@ -36,6 +36,7 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
         {
             roomListings = new List<RoomInfo>();
         }
+
         int tempIndex;
         foreach(RoomInfo room in roomList)
         {
@@ -97,7 +98,6 @@ public class MainLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("Faild Create a Room");
     }
 
     public void LogOut()

@@ -13,8 +13,10 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
+        /*
         Debug.Log("OnConnectedToMaster() was called by PUN.");
         Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server!");
+        */
         // PhotonNetwork.JoinRandomRoom();
     }
 }

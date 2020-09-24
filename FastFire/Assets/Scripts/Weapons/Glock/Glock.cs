@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.IO;
 
 public class Glock : MonoBehaviourPunCallbacks
 {
@@ -31,7 +32,6 @@ public class Glock : MonoBehaviourPunCallbacks
     public float sizeCrosshair = 300f;
     float defaultSizeCrosshair = 300f;
 
-    public float bulletForce = 400.0f;
     public Transform bulletPrefab;
     public Transform bulletSpawnPoint;
 
@@ -80,14 +80,33 @@ public class Glock : MonoBehaviourPunCallbacks
                 StartCoroutine(Shoot());
                 ammunition--;
 
-                var bullet = (Transform)Instantiate(
-                    bulletPrefab,
-                    bulletSpawnPoint.transform.position,
-                    bulletSpawnPoint.transform.rotation);
+                var rotation = bulletSpawnPoint.transform.rotation;
+                var position = bulletSpawnPoint.transform.position;
 
-                //Add velocity to the bullet
-                bullet.GetComponent<Rigidbody>().velocity =
-                    bullet.transform.forward * bulletForce;
+                /*
+                photonView.RPC("InstantiateBullet", RpcTarget.AllBuffered,
+                    position,
+                    rotation,
+                    PhotonNetwork.AuthValues.UserId,
+                    PhotonNetwork.NickName
+                    );
+                */
+                /*
+                photonView.RPC("InstantiateBullet", RpcTarget.AllBuffered,
+                    new BulletParam()
+                    {
+                        position = position,
+                        rotation = rotation,
+                        playerID = PhotonNetwork.AuthValues.UserId,
+                        playerName = PhotonNetwork.NickName
+                    });*/
+
+                var playerID = PhotonNetwork.AuthValues.UserId;
+                var playerName = PhotonNetwork.NickName;
+
+                object[] parametros = { playerID, playerName };
+
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Bullet"), position, rotation, 0, parametros);
             }
             else if (!shootting && ammunition == 0 && totalAmmunition > 0)
             {
@@ -100,6 +119,18 @@ public class Glock : MonoBehaviourPunCallbacks
             }
         }
     }
+
+    [PunRPC]
+    public void InstantiateBullet(Quaternion rotation, Vector3 position, string playerID, string playerName)
+    {
+
+        var newBullet = Instantiate(bulletPrefab, position, rotation).GetComponent<BulletScript>();
+
+        newBullet.playerID = playerID;
+        newBullet.playerName = playerName;
+    }
+
+
     void Reload(bool tryFire = false)
     {
         if ((Input.GetKeyDown(KeyCode.R) || tryFire) && totalAmmunition > 0 && ammunition < defaultAmmunition)
@@ -182,16 +213,19 @@ public class Glock : MonoBehaviourPunCallbacks
     }
     void MagazineSound1()
     {
+        if (!photonView.IsMine) return;
         audioGun.clip = gunSounds[1];
         audioGun.Play();
     }
     void MagazineSound2()
     {
+        if (!photonView.IsMine) return;
         audioGun.clip = gunSounds[2];
         audioGun.Play();
     }
     void BulletInTheNeedle()
     {
+        if (!photonView.IsMine) return;
         audioGun.clip = gunSounds[3];
         audioGun.Play();
     }
@@ -225,4 +259,12 @@ public class Glock : MonoBehaviourPunCallbacks
         }
         uiScript.corsshair.sizeDelta = new Vector2(sizeCrosshair, sizeCrosshair);
     }
+}
+
+public class BulletParam
+{
+    public Quaternion rotation { get; set; }
+    public Vector3 position { get; set; }
+    public string playerID { get; set; }
+    public string playerName { get; set; }
 }

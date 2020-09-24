@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MultiplayerSceneDemo.unity
     guid: 814cb644838e8264585645ecfb3cce48
+  - enabled: 1
+    path: Assets/Scenes/EndGameScene.unity
+    guid: f22e91d428723a74db75b4c2b85e1b23
   m_configObjects: {}

@@ -35,5 +35,14 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_SendTimer
+  - TakeDamageNetwork
+  - DestroyBulletRPC
+  - DestroyBullet
+  - DestroyPlayer
+  - DeathPlayer
+  - InstantiateBullet
+  - ChatMessage
+  - BulletDestroy
+  - addNewDeathNetwork
   DisableAutoOpenWizard: 1
   ShowSettings: 0

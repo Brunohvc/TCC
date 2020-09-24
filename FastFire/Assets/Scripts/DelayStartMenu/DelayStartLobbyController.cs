@@ -23,27 +23,22 @@ public class DelayStartLobbyController : MonoBehaviourPunCallbacks
         delayStartButton.SetActive(false);
         delayCancelButton.SetActive(true);
         PhotonNetwork.JoinRandomRoom(); // First tries to join an existing room
-        Debug.Log("delay start");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("Failed to join a room");
         CreateRoom();
     }
 
     void CreateRoom()
     {
-        Debug.Log("Creating room now");
         int randomRoomNumber = Random.Range(0, 10000);
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)RoomSize };
         PhotonNetwork.CreateRoom("Room" + randomRoomNumber, roomOps);
-        Debug.Log(randomRoomNumber);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("Failed to create room... trying again");
         CreateRoom();
     }
 

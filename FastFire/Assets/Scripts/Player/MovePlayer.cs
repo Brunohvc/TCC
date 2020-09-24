@@ -43,10 +43,13 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     public GameObject canvasPlayer;
     public GameObject options;
 
+    UIManager uiScript;
+
     // Start is called before the first frame update
     void Start()
     {
         canvasPlayer.SetActive(photonView.IsMine);
+        uiScript = GameObject.FindWithTag("uiManager").GetComponent<UIManager>();
         if (!photonView.IsMine) return;
         character.SetActive(false);
         defaultSpeed = speed;
@@ -223,7 +226,66 @@ public class MovePlayer : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
-        SceneManager.LoadScene(1);
-        PhotonNetwork.LeaveRoom();
+        if (photonView.IsMine)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene(3);
+        }
+    }
+
+    public void TakeDamage(string playerID, string playerName)
+    {
+        photonView.RPC("TakeDamageNetwork", RpcTarget.AllViaServer, playerID, playerName);
+        //uiScript.addNewDeath("G1", "G2");
+        //photonView.RPC("ChatMessage", RpcTarget.All, "jup", "and jup.");
+    }
+
+    [PunRPC]
+    public void TakeDamageNetwork(string playerID, string playerName)
+    {
+        hp -= UnityEngine.Random.Range(25f, 100f);
+        if (hp <= 0)
+        {
+            Debug.Log(photonView.Owner.NickName + " => " + photonView.IsMine);
+
+            if (photonView.IsMine)
+            {
+                Debug.Log("TakeDamageNetwork: " + photonView.Owner.NickName + " - " + playerName);
+
+                // LeaveRoom();
+                photonView.RPC("DeathPlayer", RpcTarget.AllViaServer, playerName, photonView.Owner.NickName);
+            }
+
+        }
+    }
+
+    [PunRPC]
+    public void DeathPlayer(string playerKillerName, string playerDeathName)
+    {
+
+        var listPlayer = GameObject.FindGameObjectsWithTag("Player");
+        foreach(var player in listPlayer)
+        {
+            if (player.GetComponent<PhotonView>().IsMine)
+            {
+                if (uiScript)
+                {
+                    uiScript.addNewDeath(playerKillerName, playerDeathName);
+                }
+                break;
+            }
+        }
+    }
+
+    [PunRPC]
+    void ChatMessage(string a, string b)
+    {
+        if (uiScript != null)
+        {
+            Debug.Log(string.Format("ChatMessage {0} {1}", a, b));
+
+            uiScript.addNewDeath(a, b);
+        }
     }
 }

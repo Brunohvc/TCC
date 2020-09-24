@@ -546,3 +546,5 @@ C:\Projetos\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Demos.csprojAssemblyRef
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Demos.csproj.CopyComplete
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Demos.dll
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonUnityNetworking.Demos.pdb
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.OSXStandalone.Extensions.dll
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.OSXStandalone.Extensions.pdb

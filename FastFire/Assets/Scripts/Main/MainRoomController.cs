@@ -15,6 +15,9 @@ public class MainRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject roomPanel;
 
+    [SerializeField]
+    private GameObject error;
+
 
     [SerializeField]
     private GameObject startButton;
@@ -29,7 +32,6 @@ public class MainRoomController : MonoBehaviourPunCallbacks
 
     void ClearPlayerListing()
     {
-        Debug.Log("ClearPlayerListing");
         for (int i = playersContainer.childCount -1; i >= 0; i--)
         {
             Destroy(playersContainer.GetChild(i).gameObject);
@@ -38,7 +40,6 @@ public class MainRoomController : MonoBehaviourPunCallbacks
 
     void ListPlayers()
     {
-        Debug.Log("ListPlayers");
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             GameObject tempListing = Instantiate(playerListingPrefab, playersContainer);
@@ -61,14 +62,12 @@ public class MainRoomController : MonoBehaviourPunCallbacks
             startButton.SetActive(false);
         }
 
-        Debug.Log("OnJoinedRoom");
         ClearPlayerListing();
         ListPlayers();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("OnPlayerEnteredRoom: " + newPlayer.NickName);
         ClearPlayerListing();
         ListPlayers();
     }
@@ -83,12 +82,24 @@ public class MainRoomController : MonoBehaviourPunCallbacks
         }
     }
 
-    public void StartGame()
+    public async void StartGame()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient /*&& PhotonNetwork.PlayerList.Length > 2*/)
         {
             PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
         }
+        else
+        {
+            error.SetActive(true);
+
+            StartCoroutine(hiddeError(5));
+        }
+    }
+
+    IEnumerator hiddeError(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        error.SetActive(false);
     }
 
     IEnumerator rejoinLobby()

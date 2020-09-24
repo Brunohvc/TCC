@@ -542,3 +542,5 @@ C:\Projetos\TCC\FastFire\obj\Debug\PhotonRealtime.csprojAssemblyReference.cache
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonRealtime.csproj.CopyComplete
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonRealtime.dll
 C:\Projetos\TCC\FastFire\obj\Debug\PhotonRealtime.pdb
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.OSXStandalone.Extensions.dll
+C:\Users\bruno\projetos\GitHub\TCC\FastFire\Temp\bin\Debug\UnityEditor.OSXStandalone.Extensions.pdb

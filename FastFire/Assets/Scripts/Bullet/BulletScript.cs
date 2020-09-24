@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BulletScript : MonoBehaviour
+public class BulletScript : MonoBehaviour, IPunInstantiateMagicCallback
 {
 
 	[Range(5, 100)]
@@ -14,21 +15,33 @@ public class BulletScript : MonoBehaviour
 	public float minDestroyTime;
 	[Tooltip("Maximum time after impact that the bullet is destroyed")]
 	public float maxDestroyTime;
+	public string playerID = "";
+	public string playerName = "";
+
+	public float bulletSpeed = 400f;
+	public Rigidbody rb;
 
 	[Header("Impact Effect Prefabs")]
 	public Transform[] metalImpactPrefabs;
 
 	private void Start()
 	{
+		rb = GetComponent<Rigidbody>();
+		rb.velocity = gameObject.transform.forward * bulletSpeed;
 		//Start destroy timer
 		StartCoroutine(DestroyAfter());
+	}
+
+	public void OnPhotonInstantiate(PhotonMessageInfo info)
+	{
+		object[] instantiationData = info.photonView.InstantiationData;
+		playerID = instantiationData[0].ToString();
+		playerName = instantiationData[1].ToString();
 	}
 
 	//If the bullet collides with anything
 	private void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log(collision.transform.tag);
-
 		//If destroy on impact is false, start 
 		//coroutine with random destroy timer
 		if (!destroyOnImpact)
@@ -39,46 +52,25 @@ public class BulletScript : MonoBehaviour
 		else
 		{
 			Destroy(gameObject);
+			this.GetComponent<PhotonView>().RPC("BulletDestroy", RpcTarget.AllViaServer);
 		}
 
-		//If bullet collides with "Metal" tag
-		if (collision.transform.tag == "Metal")
+		if (collision.transform.tag == "Player" 
+			&& collision.gameObject.GetComponent<PhotonView>().IsMine)
 		{
-			//Instantiate random impact prefab from array
-			Instantiate(metalImpactPrefabs[Random.Range
-				(0, metalImpactPrefabs.Length)], transform.position,
-				Quaternion.LookRotation(collision.contacts[0].normal));
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
+			Debug.Log("OnCollisionEnter: " + 
+				collision.gameObject.GetComponent<PhotonView>().Owner.NickName + " - " + playerName);
 
-		//If bullet collides with "Target" tag
-		if (collision.transform.tag == "Target")
-		{
-			//Toggle "isHit" on target object
 			collision.transform.gameObject.GetComponent
-				<TargetScript>().isHit = true;
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
+				<MovePlayer>().TakeDamage(playerID, playerName);
 
-		//If bullet collides with "ExplosiveBarrel" tag
-		if (collision.transform.tag == "ExplosiveBarrel")
-		{
-			//Toggle "explode" on explosive barrel object
-			collision.transform.gameObject.GetComponent
-				<ExplosiveBarrelScript>().explode = true;
-			//Destroy bullet object
-			Destroy(gameObject);
 		}
+	}
 
-		//If bullet collides with "ExplosiveBarrel" tag
-		if (collision.transform.tag == "Player")
-		{
-			Debug.Log("Player");
-			//Destroy bullet object
-			Destroy(gameObject);
-		}
+	[PunRPC]
+	void BulletDestroy()
+    {
+		Destroy(gameObject);
 	}
 
 	private IEnumerator DestroyTimer()
@@ -87,7 +79,7 @@ public class BulletScript : MonoBehaviour
 		yield return new WaitForSeconds
 			(Random.Range(minDestroyTime, maxDestroyTime));
 		//Destroy bullet object
-		Destroy(gameObject);
+		this.GetComponent<PhotonView>().RPC("BulletDestroy", RpcTarget.AllViaServer);
 	}
 
 	private IEnumerator DestroyAfter()
@@ -95,6 +87,6 @@ public class BulletScript : MonoBehaviour
 		//Wait for set amount of time
 		yield return new WaitForSeconds(destroyAfter);
 		//Destroy bullet object
-		Destroy(gameObject);
+		this.GetComponent<PhotonView>().RPC("BulletDestroy", RpcTarget.AllViaServer);
 	}
 }
