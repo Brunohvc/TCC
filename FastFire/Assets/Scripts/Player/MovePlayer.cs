@@ -38,6 +38,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     [Header("Player Status")]
     public float hp = 100;
     public float stamina = 100;
+    public float kiils = 0;
     bool tiredOut = false;
     public Breath breathScript;
     public GameObject canvasPlayer;
@@ -83,7 +84,6 @@ public class MovePlayer : MonoBehaviourPunCallbacks
             jumpAudio.Play();
         }
     }
-
 
     void Walk()
     {
@@ -228,6 +228,16 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            /*
+            if (photonView.Owner.IsMasterClient && PhotonNetwork.PlayerList.Length >= 2)
+            {
+                PhotonNetwork.SetMasterClient(PhotonNetwork.MasterClient.GetNext());
+            }
+            */
+
+
+            PhotonNetwork.LeaveRoom();
+            Debug.Log("Leave Room: " + photonView.Owner.NickName + " - " + photonView.IsMine);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             SceneManager.LoadScene(3);
@@ -237,14 +247,13 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     public void TakeDamage(string playerID, string playerName)
     {
         photonView.RPC("TakeDamageNetwork", RpcTarget.AllViaServer, playerID, playerName);
-        //uiScript.addNewDeath("G1", "G2");
-        //photonView.RPC("ChatMessage", RpcTarget.All, "jup", "and jup.");
     }
 
     [PunRPC]
     public void TakeDamageNetwork(string playerID, string playerName)
     {
-        hp -= UnityEngine.Random.Range(25f, 100f);
+        int damage = (int)UnityEngine.Random.Range(25f, 100f);
+        hp -= damage;
         if (hp <= 0)
         {
             Debug.Log(photonView.Owner.NickName + " => " + photonView.IsMine);
@@ -253,39 +262,41 @@ public class MovePlayer : MonoBehaviourPunCallbacks
             {
                 Debug.Log("TakeDamageNetwork: " + photonView.Owner.NickName + " - " + playerName);
 
-                // LeaveRoom();
-                photonView.RPC("DeathPlayer", RpcTarget.AllViaServer, playerName, photonView.Owner.NickName);
+                photonView.RPC("DeathPlayer", RpcTarget.AllViaServer, playerName, photonView.Owner.NickName, playerID);
+                LeaveRoom();
             }
 
         }
     }
 
     [PunRPC]
-    public void DeathPlayer(string playerKillerName, string playerDeathName)
+    public void DeathPlayer(string playerKillerName, string playerDeathName, string playerID)
     {
 
         var listPlayer = GameObject.FindGameObjectsWithTag("Player");
         foreach(var player in listPlayer)
         {
-            if (player.GetComponent<PhotonView>().IsMine)
+            var playerView = player.GetComponent<PhotonView>();
+            if (playerView.IsMine)
             {
-                if (uiScript)
+                var playerScript = player.GetComponent<MovePlayer>();
+                if (playerScript.uiScript != null)
                 {
-                    uiScript.addNewDeath(playerKillerName, playerDeathName);
+                    playerScript.uiScript.addNewDeath(playerKillerName, playerDeathName);
+                }
+
+                if (playerView.Owner.UserId.Equals(playerID))
+                {
+                    playerScript.addKill();
+                    player.GetComponentInChildren<Glock>().addAmmunition();
                 }
                 break;
             }
         }
     }
 
-    [PunRPC]
-    void ChatMessage(string a, string b)
+    public void addKill()
     {
-        if (uiScript != null)
-        {
-            Debug.Log(string.Format("ChatMessage {0} {1}", a, b));
-
-            uiScript.addNewDeath(a, b);
-        }
+        kiils++;
     }
 }

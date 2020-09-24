@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviourPunCallbacks
 {
     MovePlayer scripMovePlayer;
     public Slider stamina;
@@ -15,12 +15,13 @@ public class UIManager : MonoBehaviour
     public Image typeFire;
     public Sprite[] spriteTypeFire;
     public RectTransform corsshair;
+    public Text kills;
+    public Text playerCounter;
 
     [SerializeField]
     private Transform deathListContainer;
     [SerializeField]
     private GameObject playerListingDeathPrefab;
-
 
     // Start is called before the first frame update
     void Start()
@@ -33,17 +34,15 @@ public class UIManager : MonoBehaviour
     {
         stamina.value = scripMovePlayer.stamina;
         hp.text = scripMovePlayer.hp.ToString();
+        kills.text = scripMovePlayer.kiils.ToString();
+        playerCounter.text = "Players " + PhotonNetwork.CurrentRoom.PlayerCount + " / " + PhotonNetwork.CurrentRoom.MaxPlayers;
     }
 
     public void addNewDeath(string playerKillerName, string playerDeathName)
     {
-        Debug.Log("Death! Network");
         GameObject tempListing = Instantiate(playerListingDeathPrefab, deathListContainer);
         Text tempText = tempListing.transform.GetChild(0).GetComponent<Text>();
         tempText.text = playerKillerName + "  Matou  " + playerDeathName;
-
-
-        Debug.Log("Death string: " + tempText.text);
 
         StartCoroutine(removeDeathPlayer(tempListing));
     }

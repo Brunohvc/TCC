@@ -83,24 +83,6 @@ public class Glock : MonoBehaviourPunCallbacks
                 var rotation = bulletSpawnPoint.transform.rotation;
                 var position = bulletSpawnPoint.transform.position;
 
-                /*
-                photonView.RPC("InstantiateBullet", RpcTarget.AllBuffered,
-                    position,
-                    rotation,
-                    PhotonNetwork.AuthValues.UserId,
-                    PhotonNetwork.NickName
-                    );
-                */
-                /*
-                photonView.RPC("InstantiateBullet", RpcTarget.AllBuffered,
-                    new BulletParam()
-                    {
-                        position = position,
-                        rotation = rotation,
-                        playerID = PhotonNetwork.AuthValues.UserId,
-                        playerName = PhotonNetwork.NickName
-                    });*/
-
                 var playerID = PhotonNetwork.AuthValues.UserId;
                 var playerName = PhotonNetwork.NickName;
 
@@ -259,12 +241,9 @@ public class Glock : MonoBehaviourPunCallbacks
         }
         uiScript.corsshair.sizeDelta = new Vector2(sizeCrosshair, sizeCrosshair);
     }
-}
 
-public class BulletParam
-{
-    public Quaternion rotation { get; set; }
-    public Vector3 position { get; set; }
-    public string playerID { get; set; }
-    public string playerName { get; set; }
+    public void addAmmunition(int value = 10)
+    {
+        totalAmmunition += value;
+    }
 }

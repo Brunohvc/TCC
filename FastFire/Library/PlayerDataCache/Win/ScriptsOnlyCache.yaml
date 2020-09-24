@@ -44,9 +44,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
-    PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PhotonTransformViewEditor
-    - Photon.Pun.PhotonViewInspector
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
     - Photon.Pun.PhotonRigidbodyView
@@ -731,7 +728,7 @@ ScriptsOnlyBuild:
     className: ConnectAndJoinRandomLb
   - hash:
       serializedVersion: 2
-      Hash: 1b51afe368c524bca38b6466df75c946
+      Hash: 44465a897e0bfc46dea99f4f7b9c7f87
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1277,7 +1274,7 @@ ScriptsOnlyBuild:
     className: OnClickDestroy
   - hash:
       serializedVersion: 2
-      Hash: 48467ae36ebc4e4a80e213b42df54dad
+      Hash: b95317ffd1f2cb1d1191fd8ccbf846c5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MovePlayer

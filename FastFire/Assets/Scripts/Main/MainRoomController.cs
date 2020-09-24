@@ -84,7 +84,7 @@ public class MainRoomController : MonoBehaviourPunCallbacks
 
     public async void StartGame()
     {
-        if (PhotonNetwork.IsMasterClient /*&& PhotonNetwork.PlayerList.Length > 2*/)
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.PlayerList.Length >= 2)
         {
             PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
         }
