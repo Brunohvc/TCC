@@ -73,9 +73,11 @@ public class Glock : MonoBehaviourPunCallbacks
         {
             if (!shootting && ammunition > 0)
             {
+                /*
                 audioGun.clip = gunSounds[0];
                 audioGun.Play();
-                // bulletTrail.Play();
+                */
+                photonView.RPC("PlaySound", RpcTarget.AllViaServer, 0);
                 shootting = true;
                 StartCoroutine(Shoot());
                 ammunition--;
@@ -96,20 +98,23 @@ public class Glock : MonoBehaviourPunCallbacks
             }
             else if (!shootting && ammunition == 0)
             {
+                /*
                 audioGun.clip = gunSounds[4];
                 audioGun.Play();
+                */
+                photonView.RPC("PlaySound", RpcTarget.AllViaServer, 4);
             }
         }
     }
 
     [PunRPC]
-    public void InstantiateBullet(Quaternion rotation, Vector3 position, string playerID, string playerName)
+    public void PlaySound(int index)
     {
-
-        var newBullet = Instantiate(bulletPrefab, position, rotation).GetComponent<BulletScript>();
-
-        newBullet.playerID = playerID;
-        newBullet.playerName = playerName;
+        if (audioGun != null)
+        {
+            audioGun.clip = gunSounds[index];
+            audioGun.Play();
+        }
     }
 
 
@@ -139,8 +144,11 @@ public class Glock : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            /*
             audioGun.clip = gunSounds[1];
             audioGun.Play();
+            */
+            photonView.RPC("PlaySound", RpcTarget.AllViaServer, 1);
             automatic = !automatic;
             if (automatic)
             {
@@ -196,20 +204,29 @@ public class Glock : MonoBehaviourPunCallbacks
     void MagazineSound1()
     {
         if (!photonView.IsMine) return;
+        /*
         audioGun.clip = gunSounds[1];
         audioGun.Play();
+        */
+        photonView.RPC("PlaySound", RpcTarget.AllViaServer, 1);
     }
     void MagazineSound2()
     {
         if (!photonView.IsMine) return;
+        /*
         audioGun.clip = gunSounds[2];
         audioGun.Play();
+        */
+        photonView.RPC("PlaySound", RpcTarget.AllViaServer, 2);
     }
     void BulletInTheNeedle()
     {
         if (!photonView.IsMine) return;
+        /*
         audioGun.clip = gunSounds[3];
         audioGun.Play();
+        */
+        photonView.RPC("PlaySound", RpcTarget.AllViaServer, 3);
     }
     void VerifyCrossHair()
     {

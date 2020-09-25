@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\DelayStartMenu\DelayStartRoomController.cs" />
      <Compile Include="Assets\Scripts\DelayStartWaiting\DelayStartWaitingRoomController.cs" />
      <Compile Include="Assets\Scripts\Effects\DestroyEffects.cs" />
+     <Compile Include="Assets\Scripts\EndGameScene\EndGame.cs" />
      <Compile Include="Assets\Scripts\EndGameScene\EndGameController.cs" />
      <Compile Include="Assets\Scripts\GameSetupController.cs" />
      <Compile Include="Assets\Scripts\Login\LobbyControllerLogin.cs" />

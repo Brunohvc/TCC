@@ -44,5 +44,6 @@ MonoBehaviour:
   - ChatMessage
   - BulletDestroy
   - addNewDeathNetwork
+  - PlaySound
   DisableAutoOpenWizard: 1
   ShowSettings: 0

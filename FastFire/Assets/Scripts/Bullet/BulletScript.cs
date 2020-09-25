@@ -48,23 +48,18 @@ public class BulletScript : MonoBehaviour, IPunInstantiateMagicCallback
 		{
 			StartCoroutine(DestroyTimer());
 		}
-		//Otherwise, destroy bullet on impact
-		else
-		{
-			Destroy(gameObject);
-			this.GetComponent<PhotonView>().RPC("BulletDestroy", RpcTarget.AllViaServer);
-		}
 
 		if (collision.transform.tag == "Player" 
 			&& collision.gameObject.GetComponent<PhotonView>().IsMine)
 		{
-			Debug.Log("OnCollisionEnter: " + 
-				collision.gameObject.GetComponent<PhotonView>().Owner.NickName + " - " + playerName);
 
 			collision.transform.gameObject.GetComponent
 				<MovePlayer>().TakeDamage(playerID, playerName);
+			this.GetComponent<PhotonView>().RPC("BulletDestroy", RpcTarget.AllViaServer);
 
 		}
+
+		Destroy(gameObject);
 	}
 
 	[PunRPC]

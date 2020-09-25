@@ -38,11 +38,12 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     [Header("Player Status")]
     public float hp = 100;
     public float stamina = 100;
-    public float kiils = 0;
+    public int kiils = 0;
     bool tiredOut = false;
     public Breath breathScript;
     public GameObject canvasPlayer;
     public GameObject options;
+    DateTime startTime;
 
     UIManager uiScript;
 
@@ -51,6 +52,7 @@ public class MovePlayer : MonoBehaviourPunCallbacks
     {
         canvasPlayer.SetActive(photonView.IsMine);
         uiScript = GameObject.FindWithTag("uiManager").GetComponent<UIManager>();
+        startTime = DateTime.Now;
         if (!photonView.IsMine) return;
         character.SetActive(false);
         defaultSpeed = speed;
@@ -235,6 +237,10 @@ public class MovePlayer : MonoBehaviourPunCallbacks
             }
             */
 
+            TimeSpan duration = DateTime.Now.Subtract(startTime);
+
+            EndGame endGame = new EndGame();
+            endGame.changeValue(kiils, photonView.Owner.NickName, duration.ToString());
 
             PhotonNetwork.LeaveRoom();
             Debug.Log("Leave Room: " + photonView.Owner.NickName + " - " + photonView.IsMine);

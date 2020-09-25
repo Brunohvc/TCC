@@ -343,7 +343,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Connecting with sever...
+  m_Text: Connecting with server...
 --- !u!222 &166173779
 CanvasRenderer:
   m_ObjectHideFlags: 0
